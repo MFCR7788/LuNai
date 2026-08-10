@@ -84,7 +84,7 @@ enterprise_router = APIRouter(prefix="/api/enterprise/agents", tags=["enterprise
 chat_router = APIRouter(prefix="/api/chat/agents", tags=["chat:agents"])
 scope_router = APIRouter(prefix="/api/enterprise/agent-scope", tags=["enterprise:agent-scope"])
 
-STAFFDECK_AGENT_API_CLIENT_NAME = "StaffDeck 员工 API 密钥"
+STAFFDECK_AGENT_API_CLIENT_NAME = "LuNai 员工 API 密钥"
 
 
 @scope_router.get("", response_model=AgentScopeRead)

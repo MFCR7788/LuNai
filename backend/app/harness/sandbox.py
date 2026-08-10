@@ -53,8 +53,8 @@ def diagnostics() -> SandboxDiagnostics:
             "degraded",
             "SANDBOX_UNSANDBOXED_FALLBACK",
             "安全沙盒不可用，当前已自动降级为无沙盒执行。",
-            "高风险部署：执行可以访问 StaffDeck 进程权限范围内的主机资源。"
-            "生产环境请配置已签名的 Windows SRT，或将 StaffDeck 放入隔离容器/专用虚拟机。",
+            "高风险部署：执行可以访问 LuNai 进程权限范围内的主机资源。"
+            "生产环境请配置已签名的 Windows SRT，或将 LuNai 放入隔离容器/专用虚拟机。",
             backend="unsandboxed",
         )
     return report
@@ -65,7 +65,7 @@ def _environment_diagnostics(backend: str) -> SandboxDiagnostics:
         if backend == "srt" and os.geteuid() == 0:
             return SandboxDiagnostics(
                 "unavailable", "SANDBOX_ROOT_USER",
-                "当前 StaffDeck 由 root 用户运行，Linux SRT 无法安全创建 UID 映射。",
+                "当前 LuNai 由 root 用户运行，Linux SRT 无法安全创建 UID 映射。",
                 "请使用独立的普通服务账号（例如 staffdeck）重启 StaffDeck。",
             )
         userns_clone = _read_int("/proc/sys/kernel/unprivileged_userns_clone")
@@ -94,7 +94,7 @@ def _environment_diagnostics(backend: str) -> SandboxDiagnostics:
 def windows_install_command() -> str:
     resolved = resolve_srt()
     if resolved is None:
-        return "重新运行 StaffDeck 安装程序以修复沙盒组件"
+        return "重新运行 LuNai 安装程序以修复沙盒组件"
     node, cli = resolved
     return subprocess.list2cmdline([str(node), str(cli), "windows-install"])
 

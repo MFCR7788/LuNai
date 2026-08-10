@@ -130,7 +130,7 @@ def _fetch_version() -> AppVersionRead:
     try:
         response = httpx.get(
             RELEASES_FEED_URL,
-            headers={"Accept": "application/atom+xml", "User-Agent": "StaffDeck"},
+            headers={"Accept": "application/atom+xml", "User-Agent": "LuNai"},
             timeout=4.0,
             follow_redirects=True,
         )
